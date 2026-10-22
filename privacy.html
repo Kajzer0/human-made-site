@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Human Made — Privacy Policy</title>
+    <meta
+      name="description"
+      content="What the Human Made browser extension sends, what it stores, and what it never does."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <p class="wordmark"><a href="index.html">Human Made</a></p>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="rules.html">How verification works</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Privacy Policy</h1>
+      <p class="lede">
+        Human Made marks YouTube videos whose creators we have verified as human-made. The
+        extension has no account, no login, no cookies, and no analytics.
+      </p>
+
+      <h2>What leaves your browser</h2>
+      <p>
+        To decide whether a video or channel carries a mark, the extension sends the
+        YouTube identifiers it can see on the page you already have open (video ids, channel
+        handles and ids) to a database we operate on Supabase, and receives back a
+        verification status.
+      </p>
+      <p>
+        Some YouTube surfaces, the sidebar next to a video for one, show no channel link at
+        all, only the channel's display name. A display name is not an identifier, since
+        any channel can take someone else's, so for those cards the extension asks
+        YouTube's own public oEmbed endpoint about that single video, a request from your
+        page to YouTube, which already serves that page, and sends only the handle or
+        channel id it answers with. A card whose channel cannot be confirmed that way is
+        left unmarked rather than guessed from the name.
+      </p>
+      <p>
+        If you choose to report a video or a channel, the report you write (its kind,
+        reason, the identifiers involved, and any note you type) is stored there so a person
+        can review it. Nothing else is transmitted: we do not record the pages you visit,
+        your clicks, your history, or anything that identifies you.
+      </p>
+
+      <h2>What we keep</h2>
+      <p>
+        Verification records and submitted reports, stored on Supabase. Reports are
+        insert-only from the extension: it cannot read, change, or delete them. Your
+        settings and cached statuses stay in your own browser storage.
+      </p>
+
+      <h2>What we never do</h2>
+      <p>
+        We do not sell or share data, we do not use it for advertising or profiling, and we
+        do not ask for personal information. The use of information received from Google
+        APIs adheres to the Chrome Web Store User Data Policy, including the Limited Use
+        requirements.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:kajzero.contact@gmail.com">kajzero.contact@gmail.com</a>
+      </p>
+    </main>
+
+    <footer>
+      <p>Human Made · <a href="index.html">Home</a></p>
+    </footer>
+  </body>
+</html>
