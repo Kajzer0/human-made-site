@@ -1,134 +1,518 @@
-/* Human Made: dwie strony, jeden arkusz. Bez frameworka i bez tła z gradientu.
-   Ciemny motyw jest domyślny, bo tak wygląda YouTube, na którym ta wtyczka żyje. */
+/* Human Made. Arkusz napisany recznie, bez frameworka. */
 
-:root {
-  color-scheme: light dark;
-  --bg: #101114;
-  --fg: #e8e9ec;
-  --muted: #a0a4ad;
-  --accent: #35c48a;
-  --line: #24262c;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #fbfbfc;
-    --fg: #16181d;
-    --muted: #5c6068;
-    --accent: #12845c;
-    --line: #e3e5e9;
-  }
-}
-
-* {
-  box-sizing: border-box;
+html {
+  background: #000030;
 }
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-header,
-main,
-footer {
-  max-width: 46rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.wordmark {
-  margin: 0;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-}
-
-nav a {
-  color: var(--muted);
-  margin-left: 1.25rem;
-}
-
-main {
-  padding-top: 3rem;
-  padding-bottom: 4rem;
-}
-
-h1 {
-  margin: 0 0 1rem;
-  font-size: 2rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  margin: 2.5rem 0 0.5rem;
-  font-size: 1.05rem;
-  letter-spacing: 0.01em;
-  color: var(--fg);
-}
-
-.lede {
-  margin: 0 0 1.5rem;
-  font-size: 1.15rem;
-  color: var(--muted);
-}
-
-ul {
-  padding-left: 1.1rem;
-}
-
-li {
-  margin-bottom: 0.5rem;
+  padding: 16px 8px 30px;
+  background-color: #000030;
+  background-image: url("assets/bg.gif");
+  background-repeat: repeat;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16.5px;
+  line-height: 1.45;
+  color: #ffffff;
 }
 
 a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-a:hover {
+  color: #0000cc;
   text-decoration: underline;
 }
 
-strong {
-  font-weight: 600;
+a:visited {
+  color: #660099;
 }
 
-/* Stan pozycji na roadmapie: zwykły tekst w nawiasie, nie pigułka ani plakietka. */
+a:hover {
+  color: #cc0000;
+}
+
+a:active {
+  color: #ffff00;
+  background: #000080;
+}
+
+img {
+  border: 0;
+}
+
+::selection {
+  background: #000080;
+  color: #ffff00;
+}
+
+:focus-visible {
+  outline: 1px dotted #000000;
+  outline-offset: 2px;
+}
+
+/* pasek przewijania, jak w Windows 95 */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border-left: 1px solid #808080;
+  background-image: linear-gradient(45deg, #b0b0b0 25%, transparent 25%, transparent 75%, #b0b0b0 75%),
+    linear-gradient(45deg, #b0b0b0 25%, transparent 25%, transparent 75%, #b0b0b0 75%);
+  background-size: 4px 4px;
+  background-position: 0 0, 2px 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 2px outset #f0f0f0;
+}
+
+::-webkit-scrollbar-button {
+  background: #c0c0c0;
+  border: 2px outset #f0f0f0;
+  height: 16px;
+}
+
+/* ramka strony */
+.frame {
+  width: 760px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 2px ridge #e8e8e8;
+  background: #ffffff;
+  text-align: left;
+}
+
+/* naglowek */
+.head {
+  background: #000080;
+  border-bottom: 2px solid #000033;
+}
+
+.head table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.head td {
+  padding: 6px;
+  vertical-align: middle;
+}
+
+.head-side {
+  padding: 4px 10px;
+  border-left: 1px solid #3a5aa0;
+  font: 10px/1.65 Verdana, Geneva, sans-serif;
+  color: #a8c4e8;
+}
+
+.head-side .hs1 {
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+.head-side .hs3 {
+  color: #99ffcc;
+}
+
+/* pasek z newsem */
+.ticker {
+  display: flex;
+  align-items: center;
+  padding: 3px 6px;
+  background: #000066;
+  border-bottom: 2px solid #000033;
+  font: bold 11px/1.7 Verdana, Geneva, sans-serif;
+  color: #ffff00;
+}
+
+.ticker-track {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.ticker-text {
+  display: block;
+  border: 1px solid #3a5aa0;
+  padding: 2px 6px;
+  color: #ffff00;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticker-label {
+  flex: 0 0 auto;
+  padding: 2px 8px 2px 0;
+  color: #ffffff;
+  letter-spacing: 0.06em;
+}
+
+/* pasek nawigacji */
+.navbar {
+  background: #c0c0c0;
+  border-bottom: 1px solid #808080;
+  padding: 5px 6px 4px;
+}
+
+.navbar .btn {
+  display: inline-block;
+  margin-right: 3px;
+  padding: 3px 9px 2px;
+  background: #c0c0c0;
+  border: 2px outset #f0f0f0;
+  font: bold 10.5px/1.2 Verdana, Geneva, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #000000;
+  text-decoration: none;
+}
+
+.navbar .btn:visited {
+  color: #000000;
+}
+
+.navbar .btn:hover {
+  background: #d6d6d6;
+  color: #000000;
+}
+
+.navbar .btn[aria-current="page"] {
+  border-style: inset;
+  background: #a9a9a9;
+  padding: 4px 8px 1px 10px;
+}
+
+.navbar .note {
+  float: right;
+  padding-top: 3px;
+  font: 9.5px/1.6 Verdana, Geneva, sans-serif;
+  color: #333333;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* uklad dwukolumnowy */
+.layout {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.side {
+  width: 186px;
+  padding: 8px 8px 16px;
+  background: #ffffcc;
+  color: #000000;
+  border-right: 1px solid #808080;
+  vertical-align: top;
+}
+
+.main {
+  padding: 12px 22px 30px;
+  vertical-align: top;
+  background: #ffffff;
+  color: #000000;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* ramki w kolumnie bocznej */
+.box {
+  width: 100%;
+  margin: 0 0 12px;
+  border-collapse: collapse;
+  border: 1px solid #808080;
+}
+
+.box th {
+  padding: 2px 4px;
+  background: #000080;
+  color: #ffffff;
+  border: 1px solid #808080;
+  font: bold 10px/1.5 Verdana, Geneva, sans-serif;
+  text-align: left;
+  letter-spacing: 0.04em;
+}
+
+.box td {
+  padding: 5px;
+  background: #ffffcc;
+  border: 1px solid #808080;
+  font: 10.5px/1.45 Verdana, Geneva, sans-serif;
+  color: #000000;
+}
+
+.box b {
+  color: #000000;
+}
+
+.box ul {
+  margin: 4px 0 0;
+  padding-left: 14px;
+  list-style: square;
+}
+
+.box li {
+  margin-bottom: 2px;
+}
+
+.counter {
+  margin: 2px 0 3px;
+  line-height: 0;
+}
+
+.counter img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.new {
+  vertical-align: -2px;
+  margin-left: 2px;
+}
+
+.mailicon {
+  float: left;
+  margin: 0 6px 2px 0;
+}
+
+/* tresc */
+.main h1 {
+  margin: 2px 0 5px;
+  font: bold 30px/1.1 "Times New Roman", Times, serif;
+  color: #000080;
+}
+
+.main .sub {
+  margin: 0 0 4px;
+  font: 10.5px/1.6 Verdana, Geneva, sans-serif;
+  color: #444444;
+}
+
+.main h2 {
+  margin: 24px 0 8px;
+  padding: 2px 6px;
+  font: bold 11.5px/1.7 Verdana, Geneva, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: #000080;
+  border: 1px solid #000040;
+}
+
+.main p {
+  margin: 0 0 11px;
+}
+
+.main .lede {
+  font-size: 17.5px;
+}
+
+.main ul,
+.main ol {
+  margin: 0 0 12px;
+  padding-left: 22px;
+}
+
+.main li {
+  margin-bottom: 5px;
+}
+
+.main ul ul,
+.main ul ol,
+.main ol ul,
+.main ol ol {
+  margin-top: 5px;
+  margin-bottom: 4px;
+}
+
+ul.stars {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.stars li {
+  position: relative;
+  padding-left: 17px;
+}
+
+ul.stars li::before {
+  content: url("assets/star.gif");
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+.inline-badge {
+  vertical-align: -6px;
+  margin: 0 2px;
+}
+
 .state {
-  color: var(--muted);
-  font-size: 0.92em;
+  font: 10.5px/1.4 Verdana, Geneva, sans-serif;
+  color: #555555;
 }
 
-.state::before {
-  content: "[";
+
+/* tabela roadmapy */
+.roadmap {
+  width: 100%;
+  margin: 0 0 14px;
+  border-collapse: collapse;
+  border: 1px solid #808080;
 }
 
-.state::after {
-  content: "]";
+.roadmap th {
+  padding: 2px 5px;
+  background: #000080;
+  border: 1px solid #808080;
+  font: bold 10px/1.6 Verdana, Geneva, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-align: left;
 }
 
-footer {
-  padding-bottom: 3rem;
-  border-top: 1px solid var(--line);
-  padding-top: 1.5rem;
-  color: var(--muted);
-  font-size: 0.9rem;
+.roadmap td {
+  padding: 3px 5px;
+  border: 1px solid #999999;
+  vertical-align: top;
 }
 
-footer p {
-  margin: 0;
+.roadmap td.status {
+  width: 132px;
+  background: #ffffcc;
+  font: 10.5px/1.45 Verdana, Geneva, sans-serif;
+  color: #333333;
+}
+
+hr {
+  margin: 12px 0 14px;
+}
+
+/* stopka */
+.footer {
+  padding: 8px 10px 10px;
+  background: #c0c0c0;
+  border-top: 2px solid #808080;
+  font: 10.5px/1.55 Verdana, Geneva, sans-serif;
+  color: #000000;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0 0 6px;
+}
+
+.footer a {
+  color: #000080;
+}
+
+.footer .tiny {
+  font-size: 10px;
+  color: #222222;
+}
+
+.footer img {
+  margin: 2px 4px 0;
+  vertical-align: middle;
+}
+
+/* waski ekran: kolumny jedno pod drugim, tresc pierwsza */
+@media (max-width: 800px) {
+  body {
+    padding: 0;
+  }
+
+  .frame {
+    width: 100%;
+    max-width: 100%;
+    border: 0;
+  }
+
+  .head table,
+  .head tbody,
+  .head tr,
+  .head td {
+    display: block;
+    width: auto;
+  }
+
+  .head td {
+    padding: 4px;
+  }
+
+  .head-art img {
+    width: 100%;
+    height: auto;
+  }
+
+  .head-side {
+    border-left: 0;
+    border-top: 1px solid #3a5aa0;
+    padding: 5px 6px;
+  }
+
+  .ticker {
+    font-size: 10px;
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .layout tbody,
+  .layout tr {
+    display: contents;
+  }
+
+  .main {
+    order: 1;
+    min-width: 0;
+    padding: 14px 14px 24px;
+  }
+
+  .side {
+    order: 2;
+    width: auto;
+    min-width: 0;
+    border-right: 0;
+    border-top: 1px solid #808080;
+  }
+
+  .roadmap,
+  .roadmap tbody,
+  .roadmap tr,
+  .roadmap th,
+  .roadmap td {
+    display: block;
+    width: auto;
+  }
+
+  .roadmap th:nth-child(2) {
+    display: none;
+  }
+
+  .roadmap td.status {
+    width: auto;
+    padding: 2px 5px 4px;
+    border-top: 0;
+    font-size: 10px;
+  }
+
+  .navbar .note {
+    display: none;
+  }
+
+  .navbar .btn {
+    margin-bottom: 2px;
+  }
+
+  .main h1 {
+    font-size: 25px;
+  }
 }

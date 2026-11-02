@@ -1,4 +1,4 @@
-# Human Made — site
+# Human Made site
 
 Pages for the Human Made browser extension: what the mark claims, how verification works,
 and the privacy policy the Chrome Web Store requires a public link to.
