@@ -111,23 +111,28 @@ Questions about this policy:<br>
 
 <h2>What leaves your browser</h2>
 <p>
-To decide whether a video or channel carries a mark, the extension sends the YouTube identifiers it can see on the page you already have open (video ids, channel handles and ids) to a database we operate on Supabase, and receives back a verification status.
+Nothing. Like, actually. You only send GET requests to the Supabase with all the channels stored to check if the video you see is from a verified channel. That's all.
 </p>
 <p>
-Some YouTube surfaces, the sidebar next to a video for one, show no channel link at all, only the channel's display name. A display name is not an identifier, since any channel can take someone else's, so for those cards the extension asks YouTube's own public oEmbed endpoint about that single video, a request from your page to YouTube, which already serves that page, and sends only the handle or channel id it answers with. A card whose channel cannot be confirmed that way is left unmarked rather than guessed from the name.
+The only time something is being sent is when you decide to manually submit a channel for a review or when you report a wrongly verified channel.
 </p>
 <p>
-If you choose to report a video or a channel, the report you write (its kind, reason, the identifiers involved, and any note you type) is stored there so a person can review it. Nothing else is transmitted: we do not record the pages you visit, your clicks, your history, or anything that identifies you.
-</p>
-
-<h2>What we keep</h2>
-<p>
-Verification records and submitted reports, stored on Supabase. Reports are insert-only from the extension: it cannot read, change, or delete them. Your settings and cached statuses stay in your own browser storage.
+So yeah, by default nothing is being sent nor tracked nowhere.
 </p>
 
-<h2>What we never do</h2>
+<h2>What is kept</h2>
 <p>
-We do not sell or share data, we do not use it for advertising or profiling, and we do not ask for personal information. The use of information received from Google APIs adheres to the Chrome Web Store User Data Policy, including the Limited Use requirements.
+Verification records and submitted reports, stored on my Supabase. Your settings and cached data stay in your browser.
+</p>
+
+<h2>Data selling</h2>
+<p>
+&hellip;nah.
+</p>
+
+<h2>Google API stuff</h2>
+<p>
+The use of information received from Google APIs adheres to the Chrome Web Store User Data Policy, including the Limited Use requirements.
 </p>
 
 <h2>Contact</h2>
@@ -135,9 +140,6 @@ We do not sell or share data, we do not use it for advertising or profiling, and
 <a href="mailto:kajzero.contact@gmail.com">kajzero.contact@gmail.com</a>
 </p>
 
-<p class="sub">
-<a href="#top">&uarr; Back to the top</a>
-</p>
 </td>
 </tr>
 </table>
